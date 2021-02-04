@@ -1,0 +1,15 @@
+drawback of insertion sort is the amount of shifting
+if the array was an almost sorted array, the time complexity would be almost linear
+shell sort is therefore an improvement over insertion sort
+
+insertion sort uses a gap value of 1
+shell sort starts off by using a larger gap value
+
+as the algo runs, the gap is reduced, until the last iteration has gap = 1
+the algo does preliminary work until it becomes insertion sort
+the preliminary work makes the elements closer to their sorted positions
+
+knuth sequence is a popular sequence where gap = (3^k - 1)/2
+we will use gap = array.length/2 and divide it by 2 in all consecutive iterations
+
+It is an UNSTABLE sort
