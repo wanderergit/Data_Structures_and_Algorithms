@@ -36,6 +36,15 @@ public class SimpleHashTable {
         return hashtable[hashedKey].employee;
     }
 
+    public Employee remove(String key){
+        int hashedKey = findKey(key);
+        if (hashedKey == -1)
+            return null;
+        Employee employee = hashtable[hashedKey].employee;
+        hashtable[hashedKey] = null;
+        return employee;
+    }
+
     public void printHashtable(){
         for (StoredEmployee employee : hashtable){
             if (employee == null)
@@ -71,11 +80,10 @@ public class SimpleHashTable {
             hashedKey = hashedKey + 1 % hashtable.length;
         }
         //either we have seen the whole array or found the key
-        if (stopIndex == hashedKey)
-            return -1;
-        else
+        if (hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key))
             return hashedKey;
-
+        else
+            return -1;
     }
 
 }

@@ -15,6 +15,8 @@ public class Main {
         ht.put("Wilson", mikeWilson);
         ht.put("End", billEnd);
 
+        ht.remove("Wilson");
+        ht.remove("Jones");
         ht.printHashtable();
     }
 }
