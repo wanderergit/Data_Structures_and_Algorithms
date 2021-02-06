@@ -10,7 +10,20 @@ public class SimpleHashTable {
 
     public void put(String key, Employee employee) {
         int hashedKey = hashKey(key);
-        if (hashtable[hashedKey] != null)
+        if(occupied(hashedKey)) {
+            int stopIndex = hashedKey;
+            //this piece of code handles the first probe
+            if(hashedKey == hashtable.length-1)
+                hashedKey = 0;
+            else {
+                hashedKey++;
+            }
+            while(occupied(hashedKey) && hashedKey != stopIndex){
+                //this piece of code handles the continuous wrapping after the first wrap.
+                hashedKey = hashedKey + 1 % hashtable.length;
+            }
+        }
+        if (occupied(hashedKey))
             System.out.println("Sorry, there's already an employee at position " + hashedKey);
         else
             hashtable[hashedKey] = employee;
@@ -27,6 +40,10 @@ public class SimpleHashTable {
 
     private int hashKey(String key){
         return key.length() % hashtable.length;
+    }
+
+    private boolean occupied(int index){
+        return hashtable[index] != null;
     }
 
 }
