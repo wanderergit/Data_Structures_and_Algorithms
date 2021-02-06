@@ -31,6 +31,27 @@ public class EmployeeDoublyLinkedList {
         size++;
     }
 
+    public void addBefore(Employee employee1, Employee employee2){
+        EmployeeNode node = new EmployeeNode(employee1);
+        EmployeeNode curr = head;
+        while(curr != null) {
+            if(curr.getEmployee() == employee2){
+                if(curr == head){
+                    node.setNext(head);
+                    head.setPrevious(node);
+                    head = node;
+                    break;
+                } else {
+                    node.setNext(curr);
+                    curr.getPrevious().setNext(node);
+                    curr.setPrevious(node);
+                }
+            }
+
+        }
+
+    }
+
     public int getSize() {
         return size;
     }
