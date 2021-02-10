@@ -22,3 +22,8 @@ Step 2 : Wherever extra work is being done by recursive calls, just store that v
 Step 3 : First check if the corresponding cell already holds a value, before performing any computation.
 
 
+How to identify a Knapsack problem -
+1) When for every item/element, choices are given, it might be a knapsack problem.
+
+When only one array is given, consider it to be the weight array.
+
