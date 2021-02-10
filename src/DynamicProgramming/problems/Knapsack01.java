@@ -22,6 +22,7 @@ public class Knapsack01 {
         int[][] t = new int[n+1][capacity+1];
         System.out.println(knapsackRecursive(wt, val, capacity, n));
         System.out.println(knapsackMemoization(wt, val, capacity, n, t));
+        System.out.println(knapsackTabulisation(wt, val, capacity, n, t));
 
     }
 
@@ -45,5 +46,17 @@ public class Knapsack01 {
         else if(wt[n-1] > capacity)
             return t[n][capacity] = knapsackMemoization(wt, val, capacity, n-1, t);
         return -1;
+    }
+
+    public static int knapsackTabulisation(int[] wt, int[] val, int capacity, int n, int[][] t){
+        //when n==0 and capacity==0, t[n][capacity] = 0, but this step can be eliminated as all the values are 0 by default
+        for(int i=1; i<n+1; i++)
+            for(int j=1; j<capacity+1; j++){
+                if(wt[i-1] <= j)
+                    t[i][j] = Math.max(val[i-1]+t[i-1][j-wt[i-1]], t[i-1][j]);
+                else if(wt[i-1] > j)
+                    t[i][j] = t[i-1][j];
+            }
+        return t[n][capacity];
     }
 }
