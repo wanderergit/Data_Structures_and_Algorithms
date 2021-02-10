@@ -1,6 +1,5 @@
 package DynamicProgramming.problems;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Knapsack01 {
@@ -21,8 +20,6 @@ public class Knapsack01 {
         for(int i=0; i<n; i++)
             wt[i] = sc.nextInt();
         int[][] t = new int[n+1][capacity+1];
-        for(int i=0; i<n; i++)
-            Arrays.fill(t[i], -1);
         System.out.println(knapsackRecursive(wt, val, capacity, n));
         System.out.println(knapsackMemoization(wt, val, capacity, n, t));
 
@@ -41,7 +38,7 @@ public class Knapsack01 {
     public static int knapsackMemoization(int[] wt, int[] val, int capacity, int n, int[][] t){
         if(n==0 || capacity==0)
             return 0;
-        if(t[n][capacity] != -1)
+        if(t[n][capacity] != 0)
             return t[n][capacity];
         if(wt[n-1] <= capacity)
             return t[n][capacity] = Math.max(val[n-1] + knapsackMemoization(wt, val, capacity-wt[n-1], n-1, t), knapsackMemoization(wt, val, capacity, n-1, t));
