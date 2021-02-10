@@ -1,0 +1,24 @@
+there are three types of Knapsack problems -
+1) Fractional Knapsack - you are allowed to add fractions of the items to fill in remaining capacity.
+2) 0/1 Knapsack - you are allowed to add only whole units of the items. Also, there is only one unit of one kind of item.
+3) Unbounded Knapsack - you are allowed to add an unlimited number of the same items if the capacity allows you to.
+
+Fractional knapsack can be solved using the Greedy Approach, we will look at the other two in DP.
+
+Way to solve a DP problem -
+Step 1 : Write the recursive solution
+Step 2 : Write the Top-Down or Memoized Solution
+Step 3 : Write the Bottom-Up Solution
+
+To arrive at the recursive solution -
+Step 1 : Figure out the choice diagram from the choices provided.
+Step 2 : Figure out the base condition. Think of the smallest valid input.
+Step 3 : Write the recursive function.
+
+To arrive at the memoized solution -
+Step 1 : Make a matrix with only those variables that change
+         If the variables weight and bag value changes, as in knapsack problems, we will get a two dimensional matrix.
+Step 2 : Wherever extra work is being done by recursive calls, just store that value in the corresponding cell.
+Step 3 : First check if the corresponding cell already holds a value, before performing any computation.
+
+
