@@ -3,6 +3,7 @@ package DynamicProgramming.problems;
 import java.util.Scanner;
 
 public class CountSubsetsOfGivenSum {
+    //count the number of subsets in the array that add up to the given sum
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of elements in the array : ");

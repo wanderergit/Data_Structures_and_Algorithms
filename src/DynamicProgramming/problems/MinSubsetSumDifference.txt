@@ -1,0 +1,21 @@
+in the subset sum problem, the absolute difference between the two sums s1 and s2 had to be zero, i.e. |s1-s2| = 0
+but in this variation, the absolute difference has to be minimum
+
+This is most similar to the Equal Sum Partition Problem.
+
+In ESP, we had to partition the array into two parts of equal sum.
+In this problem, we have to partition the array into two parts of closest sums.
+
+Suppose, we have the array [1, 2, 7], then the possible values of s1 and s2 are - {0, 1, 2, 3, 7, 8, 9, 10}
+We have to find min(s2-s1) or min(Range - s1 - s1) or min(Range-2s1), where range is the last value possible (10)
+
+Step 1 : perform subset sum as is
+Step 2 : calculate the range as the sum of all values in the array
+Step 3 : take the last row in the table, go till the middle of the row(because we get complementary values on the other side),
+         and put select only those sums whose cell values are true, and put it into another list
+Step 4 : traverse the list and calculate the min(Range - 2*valueInList)
+Step 5 : return this min value
+
+
+
+
