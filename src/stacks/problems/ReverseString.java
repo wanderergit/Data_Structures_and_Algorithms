@@ -1,28 +1,22 @@
 package stacks.problems;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class ReverseString {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine();
-
-        System.out.println(solver(s));
-    }
-
-    public static String solver(String s){
-        Stack<Character> st = new Stack<>();
-        for(int i=0; i<s.length(); i++){
-            char c = s.charAt(i);
-            st.push(c);
-        }
+    public static void main(String[] args) {
+        System.out.println("Enter a string : ");
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
         String res = "";
-        for(int i=0; i<s.length(); i++){
+        char[] chars = s.toCharArray();
+        Stack<Character> st = new Stack<>();
+        for(char ele : chars){
+            st.push(ele);
+        }
+        while(!st.isEmpty()){
             res += st.pop();
         }
-        return res;
+        System.out.println("Reversed String is : " + res);
     }
 }
