@@ -5,14 +5,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LinkedStack stack = new LinkedStack();
-        stack.push(new Employee("jane", "jones", 123));
-        stack.push(new Employee("mark", "harris", 342));
-        stack.push(new Employee("betty", "Thatcher", 351));
-        stack.push(new Employee("sandy", "J", 934));
-
-        stack.printStack();
-
+        ArrayStack st = new ArrayStack(30);
+        st.push(1);
+        st.push(34);
+        st.push(23);
+        st.push(-2);
+        st.push(38);
+        st.printStack();
+        st.pop();
+        st.pop();
+        st.printStack();
     }
 
 }

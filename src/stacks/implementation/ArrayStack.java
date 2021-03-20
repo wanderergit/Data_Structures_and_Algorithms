@@ -1,55 +1,52 @@
 package stacks.implementation;
 
-import java.util.Arrays;
-import java.util.EmptyStackException;
-
 public class ArrayStack {
+    private int[] st;
+    private int top, capacity;
 
-    private Employee[] stack;
-    private int top;
-
-    public ArrayStack(int capacity){
-        stack = new Employee[capacity];
+    public ArrayStack() {
+        st = new int[10];
+        capacity = 10;
     }
 
-    public void push(Employee employee){
-        if(top == stack.length){
-            //need to resize the backing array
-            Employee[] newArray = new Employee[2* stack.length];
-            System.arraycopy(stack, 0, newArray, 0,stack.length);
-            stack = newArray;
-        }
-        stack[top++] = employee;
+    public ArrayStack(int cap){
+        st = new int[cap];
+        capacity = cap;
     }
 
-    public Employee pop(){
-        if(isEmpty()){
-            throw new EmptyStackException();
+    public void push(int ele){
+        if(this.top == this.capacity){
+            int[] newArray = new int[2*capacity];
+            System.arraycopy(st, 0, newArray, 0, st.length);
+            st = newArray;
+            newArray = null;
         }
-
-        Employee employee = stack[--top];
-        stack[top] = null;
-        return employee;
+        st[top] = ele;
+        top = top+1;
     }
 
-    public Employee peek(){
-        if(isEmpty()){
-            throw new EmptyStackException();
-        }
+    public int pop(){
+        int res = st[top-1];
+        top = top-1;
+        return res;
+    }
 
-        return stack[top-1];
+    public int top(){
+        return st[top-1];
     }
 
     public int size(){
         return top;
     }
 
+    public int capacity(){
+        return capacity;
+    }
+
     public void printStack(){
-        System.out.println(Arrays.toString(stack));
+        System.out.println("Stack : ");
+        for(int i=top-1; i>=0; i--){
+            System.out.println(st[i]);
+        }
     }
-
-    public boolean isEmpty(){
-        return top == 0;
-    }
-
 }
