@@ -5,16 +5,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayStack st = new ArrayStack(30);
-        st.push(1);
-        st.push(34);
-        st.push(23);
-        st.push(-2);
-        st.push(38);
-        st.printStack();
-        st.pop();
-        st.pop();
-        st.printStack();
+        TwoStack st = new TwoStack();
+        st.push1(2);
+        st.push2(23);
+        st.push1(123);
+        st.push2(12);
+        st.push1(0);
+        st.printStacks();
     }
 
 }
