@@ -43,6 +43,19 @@ public class ArrayStack {
         return capacity;
     }
 
+    public int findMiddle() {
+        return st[top/2];
+    }
+
+    public int deleteMiddle(){
+        int res = st[top/2];
+        for(int i=top/2; i<top; i++){
+            st[i] = st[i+1];
+        }
+        top = top-1;
+        return res;
+    }
+
     public void printStack(){
         System.out.println("Stack : ");
         for(int i=top-1; i>=0; i--){

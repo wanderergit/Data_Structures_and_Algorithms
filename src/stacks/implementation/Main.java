@@ -5,13 +5,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TwoStack st = new TwoStack();
-        st.push1(2);
-        st.push2(23);
-        st.push1(123);
-        st.push2(12);
-        st.push1(0);
-        st.printStacks();
+        ArrayStack st = new ArrayStack();
+        st.push(2);
+        st.push(23);
+        st.push(123);
+        st.push(12);
+        st.push(0);
+        st.printStack();
+        System.out.println("Middle Element : " + st.findMiddle());
+        st.deleteMiddle();
+        st.printStack();
     }
 
 }
