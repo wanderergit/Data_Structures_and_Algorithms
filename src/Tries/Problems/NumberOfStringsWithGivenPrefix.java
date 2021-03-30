@@ -44,14 +44,38 @@ public class NumberOfStringsWithGivenPrefix {
         return 0;
     }
 
+    public static String getShortestUniquePrefix(String key){
+        int level;
+        int length = key.length();
+        int index;
+        TrieNode pCrawl = root;
+        StringBuffer res = new StringBuffer("");
+        for(level=0; level<length; level++){
+            index = key.charAt(level) - 'a';
+            if(pCrawl.prefCount == 1)
+                return res.toString();
+            if(pCrawl.children[index] == null)
+                return "";
+            pCrawl = pCrawl.children[index];
+            res.append(key.charAt(level));
+        }
+        if(pCrawl != null)
+            return res.toString();
+        return "";
+    }
+
     public static void main(String[] args) {
         root = new TrieNode();
-        insert("abac");
-        insert("abaa");
-        insert("abab");
-        insert("aabb");
-        insert("aabc");
-        System.out.println(countStringsCommonPrefix("h"));
+//        insert("abac");
+//        insert("abaa");
+//        insert("abab");
+//        insert("aabb");
+//        insert("aabc");
+        String arr[] = {"zebra", "dog", "duck", "dove"};
+        for(String item : arr)
+            insert(item);
+        for(String item: arr)
+            System.out.println(getShortestUniquePrefix(item));
     }
 
 }
