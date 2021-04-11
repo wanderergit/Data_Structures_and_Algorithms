@@ -47,6 +47,20 @@ class ReverseLevelOrder{
     }
 }
 
+class InorderRecursive {
+    public void inorderRecursive(TreeNode root){
+        if(root == null) return;
+        inorderRecursive(root.leftChild);
+        System.out.print(root.key+", ");
+        inorderRecursive(root.rightChild);
+    }
+}
+
+class InorderIterative {
+    public void inorderIterative(TreeNode root){
+
+    }
+}
 
 public class Traversals {
     public static void main(String[] args) {
@@ -67,6 +81,9 @@ public class Traversals {
         lo.levelOrder(a);
         ReverseLevelOrder rlo = new ReverseLevelOrder();
         rlo.reverseLevelOrder(a);
+        System.out.println("\nInorder Recursive : ");
+        InorderRecursive inorRec = new InorderRecursive();
+        inorRec.inorderRecursive(a);
     }
 }
 
