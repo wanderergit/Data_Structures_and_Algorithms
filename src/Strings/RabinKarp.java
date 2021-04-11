@@ -18,7 +18,7 @@ public class RabinKarp {
         int flg = 0;
         int start = 0, end = pattLen;
         while(end <= str.length()) {
-            String subStr = str.substring(start, end);;
+            String subStr = str.substring(start, end);
             long strCode = getHashCode(subStr);
             if(strCode == pattCode){
                 int t = 0;
