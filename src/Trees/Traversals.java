@@ -4,17 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class TreeNode {
-    char key;
-    TreeNode leftChild;
-    TreeNode rightChild;
-    TreeNode(char key) {
-        this.key = key;
-        leftChild = null;
-        rightChild = null;
-    }
-}
-
 class LevelOrder{
     public void levelOrder(TreeNode root) {
         if(root == null) return;
