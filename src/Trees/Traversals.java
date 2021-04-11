@@ -36,6 +36,28 @@ class LevelOrder{
     }
 }
 
+class ReverseLevelOrder{
+    //print the last row first, then the second last row and so on.. from left to right itself
+    //we can just put the right child first and then the left child in the output and then reverse the output..
+
+    public void reverseLevelOrder(TreeNode root){
+        if(root == null) return;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        ArrayList<Character> result = new ArrayList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            TreeNode tn = queue.remove();
+            if(tn.rightChild != null) queue.add(tn.rightChild);
+            if(tn.leftChild != null) queue.add(tn.leftChild);
+            result.add(tn.key);
+        }
+        System.out.print("The reverse level order traversal is : ");
+        for(int i=result.size()-1; i>=0; i--){
+            System.out.print(result.get(i)+", ");
+        }
+    }
+}
+
 
 public class Traversals {
     public static void main(String[] args) {
@@ -54,5 +76,19 @@ public class Traversals {
         d.leftChild = g;
         LevelOrder lo = new LevelOrder();
         lo.levelOrder(a);
+        ReverseLevelOrder rlo = new ReverseLevelOrder();
+        rlo.reverseLevelOrder(a);
     }
 }
+
+/*
+
+            a
+           / \
+          b   c
+         / \  /
+        d   e f
+       /
+      g
+
+ */
