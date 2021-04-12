@@ -89,7 +89,22 @@ class PreorderRecursive {
 
 class PreorderIterative {
     public void preorderIterative(TreeNode root){
-
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        TreeNode current = root;
+        boolean done = false;
+        while(!done){
+            if(current != null){
+                System.out.print(current.key+", ");
+                st.push(current);
+                current = current.leftChild;
+            }
+            else{
+                if(!st.isEmpty()){
+                    current = st.pop();
+                    current = current.rightChild;
+                } else done = true;
+            }
+        }
     }
 }
 
@@ -121,6 +136,9 @@ public class Traversals {
         System.out.println("\nPreorder Recursive : ");
         PreorderRecursive preorRec = new PreorderRecursive();
         preorRec.preorderRecursive(a);
+        System.out.println("\nPreorder Iterative : ");
+        PreorderIterative preorIter = new PreorderIterative();
+        preorIter.preorderIterative(a);
     }
 }
 
