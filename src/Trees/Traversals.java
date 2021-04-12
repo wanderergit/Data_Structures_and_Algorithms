@@ -3,6 +3,7 @@ package Trees;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 class LevelOrder{
     public void levelOrder(TreeNode root) {
@@ -58,7 +59,22 @@ class InorderRecursive {
 
 class InorderIterative {
     public void inorderIterative(TreeNode root){
-
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        TreeNode current = root;
+        boolean done = false;
+        while(!done){
+            if(current != null){
+                st.push(current);
+                current = current.leftChild;
+            }
+            else{
+                if(!st.isEmpty()){
+                    current = st.pop();
+                    System.out.print(current.key+", ");
+                    current = current.rightChild;
+                } else done = true;
+            }
+        }
     }
 }
 
@@ -84,6 +100,9 @@ public class Traversals {
         System.out.println("\nInorder Recursive : ");
         InorderRecursive inorRec = new InorderRecursive();
         inorRec.inorderRecursive(a);
+        System.out.println("\nInorder Iterative : ");
+        InorderIterative inorIter = new InorderIterative();
+        inorIter.inorderIterative(a);
     }
 }
 
