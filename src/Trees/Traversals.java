@@ -118,7 +118,35 @@ class PostorderRecursive {
 }
 
 class PostorderIterative {
-    public void
+    public void postorderIterative(TreeNode root){
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode current = root;
+
+    }
+}
+
+class LeftView {
+    public void leftView(TreeNode root) {
+        if(root == null) return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode delim = new TreeNode('|');
+        queue.add(delim);
+        queue.add(root);
+        while(queue.size() > 1){
+            if(queue.peek().key == '|'){
+                queue.remove();
+                TreeNode tn = queue.remove();
+                System.out.print(tn.key+", ");
+                queue.add(delim);
+                if(tn.leftChild != null) queue.add(tn.leftChild);
+                if(tn.rightChild != null) queue.add(tn.rightChild);
+            } else {
+                TreeNode tn = queue.remove();
+                if(tn.leftChild != null) queue.add(tn.leftChild);
+                if(tn.rightChild != null) queue.add(tn.rightChild);
+            }
+        }
+    }
 }
 
 public class Traversals {
@@ -130,12 +158,22 @@ public class Traversals {
         TreeNode e = new TreeNode('e');
         TreeNode f = new TreeNode('f');
         TreeNode g = new TreeNode('g');
+        TreeNode h = new TreeNode('h');
+        TreeNode i = new TreeNode('i');
+        TreeNode j = new TreeNode('j');
+        TreeNode k = new TreeNode('k');
+        TreeNode l = new TreeNode('l');
         a.leftChild = b;
         a.rightChild = c;
         b.leftChild = d;
         b.rightChild = e;
         c.leftChild = f;
         d.leftChild = g;
+        f.leftChild = h;
+        f.rightChild = i;
+        h.leftChild = j;
+        h.rightChild = k;
+        j.leftChild = l;
         LevelOrder lo = new LevelOrder();
         lo.levelOrder(a);
         ReverseLevelOrder rlo = new ReverseLevelOrder();
@@ -155,6 +193,12 @@ public class Traversals {
         System.out.println("\nPostorder Recursive : ");
         PostorderRecursive postorRec = new PostorderRecursive();
         postorRec.postorderRecursive(a);
+        System.out.println("\nPostorder Iterative : ");
+        PostorderIterative postordIter = new PostorderIterative();
+        postordIter.postorderIterative(a);
+        System.out.println("\nLeft View : ");
+        LeftView lv = new LeftView();
+        lv.leftView(a);
     }
 }
 
@@ -165,7 +209,11 @@ public class Traversals {
           b   c
          / \  /
         d   e f
-       /
-      g
+       /     / \
+      g     h   i
+           / \
+          j   k
+         /
+        l
 
  */
