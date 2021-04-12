@@ -149,6 +149,29 @@ class LeftView {
     }
 }
 
+class RightView {
+    public void rightView(TreeNode root) {
+        if(root == null) return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode delim = new TreeNode('|');
+        queue.add(root);
+        queue.add(delim);
+        TreeNode tn = null;
+        while(queue.size() > 1){
+            if(queue.peek().key == '|'){
+                queue.remove();
+                System.out.print(tn.key+", ");
+                queue.add(delim);
+            } else {
+                tn = queue.remove();
+                if(tn.leftChild != null) queue.add(tn.leftChild);
+                if(tn.rightChild != null) queue.add(tn.rightChild);
+            }
+        }
+        System.out.print(tn.key+", ");
+    }
+}
+
 public class Traversals {
     public static void main(String[] args) {
         TreeNode a = new TreeNode('a');
@@ -199,6 +222,9 @@ public class Traversals {
         System.out.println("\nLeft View : ");
         LeftView lv = new LeftView();
         lv.leftView(a);
+        System.out.println("\nRight View : ");
+        RightView rv = new RightView();
+        rv.rightView(a);
     }
 }
 
