@@ -3,6 +3,7 @@ package graphs.algorithms;
 import java.util.*;
 
 public class DijkstrasShortestPath {
+    public static int[] prev;
     public static void main(String[] args) {
         /*
             This is an implementation of the Dijkstra's algorithm (Lazy Approach).
@@ -38,16 +39,33 @@ public class DijkstrasShortestPath {
         //start Node = 0
 
         int s = 0;
-
+        int e = 1;
         //the dijkstras algorithm will return an array of the shortest distance from the starting node to each of the nodes.
-
-        int[] res = dijkstras(graph, v, s);
+        Object[] res = dijkstrasShortestPath(graph, v, s, e);
         System.out.println(Arrays.toString(res));
+    }
+
+    public static Object[] dijkstrasShortestPath(HashMap<Integer, List<Edge>> graph, int n, int s, int e){
+        int[] dist = dijkstras(graph, n, s);
+        //here we have the updated prev array global variable
+        //we need to initialise path and go in reverse
+        ArrayList<Integer> path = new ArrayList<>();
+        for(int at = e; ;at=prev[at]){
+            path.add(at);
+            //the prev of the root will also be 0 because it was initialised to 0; so break;
+            if(at == prev[at]){
+                break;
+            }
+        }
+        Collections.reverse(path);
+        return path.toArray();
     }
 
     public static int[] dijkstras(HashMap<Integer, List<Edge>> graph, int n, int s){
         int[] dist = new int[n];
         boolean[] vis = new boolean[n];
+        //initialising the prev array
+        prev = new int[n];
         //setting all initial values in dist array to be positive infinity
         for(int i=0; i<n; i++) dist[i] = Integer.MAX_VALUE;
         dist[s] = 0;
@@ -70,6 +88,7 @@ public class DijkstrasShortestPath {
                 int newDist = dist[p.index] + e.weight;
                 if(newDist < dist[e.to]){
                     dist[e.to] = newDist;
+                    prev[e.to] = p.index;
                     pq.add(new Pair(e.to, newDist));
                 }
             }
