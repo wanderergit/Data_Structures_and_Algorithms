@@ -2,7 +2,7 @@ package graphs.algorithms;
 
 import java.util.*;
 
-public class Dijsktras {
+public class DijkstrasShortestPath {
     public static void main(String[] args) {
         /*
             This is an implementation of the Dijkstra's algorithm (Lazy Approach).
@@ -77,5 +77,3 @@ public class Dijsktras {
         return dist;
     }
 }
-
-
