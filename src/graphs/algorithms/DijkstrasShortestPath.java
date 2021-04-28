@@ -39,14 +39,14 @@ public class DijkstrasShortestPath {
         //start Node = 0
 
         int s = 0;
-        int e = 1;
+        int e = 4;
         //the dijkstras algorithm will return an array of the shortest distance from the starting node to each of the nodes.
         Object[] res = dijkstrasShortestPath(graph, v, s, e);
         System.out.println(Arrays.toString(res));
     }
 
     public static Object[] dijkstrasShortestPath(HashMap<Integer, List<Edge>> graph, int n, int s, int e){
-        int[] dist = dijkstras(graph, n, s);
+        int[] dist = dijkstras(graph, n, s, e);
         //here we have the updated prev array global variable
         //we need to initialise path and go in reverse
         ArrayList<Integer> path = new ArrayList<>();
@@ -61,7 +61,7 @@ public class DijkstrasShortestPath {
         return path.toArray();
     }
 
-    public static int[] dijkstras(HashMap<Integer, List<Edge>> graph, int n, int s){
+    public static int[] dijkstras(HashMap<Integer, List<Edge>> graph, int n, int s, int end){
         int[] dist = new int[n];
         boolean[] vis = new boolean[n];
         //initialising the prev array
@@ -92,6 +92,10 @@ public class DijkstrasShortestPath {
                     pq.add(new Pair(e.to, newDist));
                 }
             }
+            //optimisation because if we have already reached a node, we can return it if that is the end node
+            //the algorithm would have already found the shortest distance to that node at that point and there is no
+            //need to go further.
+            if(p.index == end) return dist;
         }
         return dist;
     }
