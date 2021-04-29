@@ -13,7 +13,6 @@ public class DepthFirstTraversal {
         graph.addEdge(2, new Edge(2, 4, 9));
         graph.addEdge(3, new Edge(3, 4, 13));
 
-        int start = 0;
         int V = graph.V;
         visited = new boolean[V];
         res = new ArrayList<>(V);
