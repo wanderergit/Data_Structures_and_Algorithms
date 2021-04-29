@@ -29,6 +29,10 @@ public class GraphEdgeList {
         E = E-1;
     }
 
+    public ArrayList<Edge> get(int index){
+        return graph.get(index);
+    }
+
     public void printGraph(){
         for(int i=0; i<V; i++){
             System.out.print("["+i+"] -> ");
