@@ -16,9 +16,10 @@ public class Knapsack01 {
         System.out.println("Enter the values in the value array : ");
         for(int i=0; i<n; i++)
             val[i] = sc.nextInt();
-        System.out.println("Enter the values in the weight array : ");
+        System.out.println("Enter the weights in the weight array : ");
         for(int i=0; i<n; i++)
             wt[i] = sc.nextInt();
+        // this table is for the bottom-up and top-down approaches
         int[][] t = new int[n+1][capacity+1];
         System.out.println(knapsackRecursive(wt, val, capacity, n));
         System.out.println(knapsackMemoization(wt, val, capacity, n, t));
@@ -27,8 +28,10 @@ public class Knapsack01 {
     }
 
     public static int knapsackRecursive(int[] wt, int[] val, int capacity, int n){
+        // Base condition : smallest valid input
         if(n==0 || capacity==0)
             return 0;
+        // Choices
         if(wt[n-1] <= capacity)
             return Math.max(val[n-1] + knapsackRecursive(wt, val, capacity-wt[n-1], n-1), knapsackRecursive(wt, val, capacity, n-1));
         else if(wt[n-1] > capacity)
@@ -37,8 +40,10 @@ public class Knapsack01 {
     }
 
     public static int knapsackMemoization(int[] wt, int[] val, int capacity, int n, int[][] t){
+        // Base condition : smallest valid input
         if(n==0 || capacity==0)
             return 0;
+        // check if the table already contains a cached solution
         if(t[n][capacity] != 0)
             return t[n][capacity];
         if(wt[n-1] <= capacity)
