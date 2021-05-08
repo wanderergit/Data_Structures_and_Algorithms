@@ -1,4 +1,4 @@
-package hashtables;
+package Greedy;
 
 import java.util.Arrays;
 
