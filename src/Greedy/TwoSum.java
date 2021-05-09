@@ -20,7 +20,7 @@ public class TwoSum {
     }
 
     public boolean hasTwoSum(int[] arr, int sum){
-        Arrays.sort(arr);
+        // gets sorted array
         int l = 0, r = arr.length - 1;
         while(l<=r){
             if(arr[l] + arr[r] == sum) return true;
