@@ -29,10 +29,7 @@ public class SampleHeap {
             lastIndex = lastIndex+1;
             heap[lastIndex] = val;
 
-            //(2) swapping the last with the first
-            swap(0, lastIndex);
-
-            //(3) bubbling up the last element until it satisfies heap invariant
+            //(2) bubbling up the last element until it satisfies heap invariant
             swim(lastIndex);
         } else {
             System.out.println("heap capacity reached.");
@@ -40,10 +37,7 @@ public class SampleHeap {
     }
 
     private int getParent(int index){
-        if(index%2 == 0){
-            return (index - 2)/2;
-        }
-        return (index-1)/2;
+        return (int)(Math.floor(index/2));
     }
 
     private int getLowerChild(int index){
@@ -60,17 +54,21 @@ public class SampleHeap {
         int curr = index;
 
         if(curr != 0 && heap[parent] > heap[curr]){
-            while(curr != 0 && heap[parent] > heap[curr]) {
-                swap(curr, parent);
-                curr = parent;
-                parent = getParent(curr);
-            }
+            swap(curr, parent);
         }
+        return;
     }
 
     private void sink(int index){
+        // (1) find the min element position of both of it's children and itself
+        int indexOfMinElement = getMin(index, 2*index+1, 2*index+2);
 
+        // if the root is the min element, we don't have to do anything
+        if(indexOfMinElement == index) return;
 
+        // else we have to swap the root with the smaller of the two children
+        swap(index, indexOfMinElement);
+        sink(indexOfMinElement);
     }
 
     private void swap(int index1, int index2){
@@ -79,16 +77,23 @@ public class SampleHeap {
         heap[index2] = temp;
     }
 
+    private int getMin(int a, int b, int c){
+        if(heap[a] > heap [b] && heap[a] > heap[c]){
+            return a;
+        } else if(heap[b] > heap[c])
+            return b;
+        return c;
+    }
+
     //polling is removing the topmost element from the heap
     public int poll(){
         //(1) swap with the last element in the heap
+        int res = heap[0];
         swap(0, lastIndex);
         //(2) remove the last element from the heap
-        int res = heap[lastIndex];
         lastIndex = lastIndex - 1;
         //(3) bubble down till heap invariant is satisfied.
-        if(heap[0] > heap[1] || heap[0] > heap[2])
-            sink(0);
+        sink(0);
 
         return res;
     }
@@ -102,6 +107,8 @@ class Demo {
         sh.insert(6);
         sh.insert(3);
         sh.insert(4);
+        System.out.println(sh.peek());
+        sh.poll();
         System.out.println(sh.peek());
     }
 }
