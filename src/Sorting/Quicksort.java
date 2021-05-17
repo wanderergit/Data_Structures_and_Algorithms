@@ -1,7 +1,10 @@
 package Sorting;
 
 import java.util.Arrays;
-
+/*
+    Average Case - O(N*logN)
+    Worst Case - O(N*N)
+ */
 public class Quicksort {
     public static void main(String[] args) {
 
