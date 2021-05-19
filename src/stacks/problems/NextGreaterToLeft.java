@@ -36,7 +36,6 @@ public class NextGreaterToLeft {
             }
             st.push(array[i]);
         }
-
         return l;
     }
 }
