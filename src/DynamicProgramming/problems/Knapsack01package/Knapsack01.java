@@ -1,4 +1,4 @@
-package DynamicProgramming.problems;
+package DynamicProgramming.problems.Knapsack01package;
 
 import java.util.Scanner;
 

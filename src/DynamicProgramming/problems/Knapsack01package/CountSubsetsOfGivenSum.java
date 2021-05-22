@@ -1,4 +1,4 @@
-package DynamicProgramming.problems;
+package DynamicProgramming.problems.Knapsack01package;
 
 public class CountSubsetsOfGivenSum {
     //count the number of subsets in the array that add up to the given sum

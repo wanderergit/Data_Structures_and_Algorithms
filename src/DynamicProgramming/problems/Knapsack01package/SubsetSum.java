@@ -1,10 +1,9 @@
-package DynamicProgramming.problems;
+package DynamicProgramming.problems.Knapsack01package;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
-public class MinSubsetSumDifference {
-
+public class SubsetSum {
+    //given an array and a number s, output true if any sum of subset of array = s
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of elements in the array : ");
@@ -14,13 +13,12 @@ public class MinSubsetSumDifference {
         for(int i=0; i<n; i++){
             arr[i] = sc.nextInt();
         }
-        int range = 0;
-        for(int i=0; i<n; i++)
-            range += arr[i];
+        System.out.println("Enter the sum : ");
+        int sum = sc.nextInt();
 
-        System.out.println(solver(arr, n, range));
+        System.out.println(solver(arr, n, sum));
     }
-    public static int solver(int[] arr, int n, int sum){
+    public static boolean solver(int[] arr, int n, int sum){
         boolean[][] t = new boolean[n+1][sum+1];
         //initialization
         for(int i=0; i<n+1; i++)
@@ -39,22 +37,8 @@ public class MinSubsetSumDifference {
                     t[i][j] = t[i-1][j];
             }
         }
-        //prev portion was all subset sum
-        //add a bit of code for min subset sum difference
 
-        LinkedList<Integer> list = new LinkedList<>();
-        for(int i=0; i<sum+1; i++){
-            // filtering out the valid candidates for sum of subset
-            // these will be the true values in the last row
-            if(t[n-1][i])
-                list.add(sum);
-        }
-
-        int min = Integer.MAX_VALUE;
-        for(int element : list){
-            min = Math.min(min, sum-(2*element));
-        }
-
-        return min;
+        return t[n][sum];
     }
 }
+
