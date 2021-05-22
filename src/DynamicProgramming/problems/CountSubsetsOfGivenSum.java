@@ -1,20 +1,13 @@
 package DynamicProgramming.problems;
 
-import java.util.Scanner;
-
 public class CountSubsetsOfGivenSum {
     //count the number of subsets in the array that add up to the given sum
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements in the array : ");
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        System.out.println("Enter the elements of the array : ");
-        for(int i=0; i<n; i++){
-            arr[i] = sc.nextInt();
-        }
-        System.out.println("Enter the sum : ");
-        int sum = sc.nextInt();
+
+
+        int[] arr = {2, 3, 5, 6, 8, 10};
+        int n = 6;
+        int sum = 10;
 
         System.out.println(solver(arr, n, sum));
     }

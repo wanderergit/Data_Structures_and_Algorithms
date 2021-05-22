@@ -1,7 +1,13 @@
 package DynamicProgramming.problems;
 
 import java.util.Scanner;
-
+/*
+    In the equal sum partition problem, first off all we have to check if the total sum of the array is even
+    if the total sum of the array is odd, then it cannot be divided into two equal parts and hence it is not possible to
+    find equal sum partition.
+    if the sum is even then we have to find if there exists a subset which sums to exactly half of the total sum, then return true
+    else return false
+ */
 public class EqualSumPartition {
     //return true if the array can be divided into two parts with equal sum
     public static void main(String[] args) {
@@ -15,10 +21,12 @@ public class EqualSumPartition {
             arr[i] = sc.nextInt();
             sum += arr[i];
         }
+        // if the total sum is odd, return false
         if(sum%2 != 0){
             System.out.println(false);
             System.exit(0);
         }
+        // if the total sum is even, proceed to check if subset exists
         System.out.println(solver(arr, n, sum/2));
     }
 

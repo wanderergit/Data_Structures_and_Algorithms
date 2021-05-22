@@ -42,10 +42,11 @@ public class MinSubsetSumDifference {
         //prev portion was all subset sum
         //add a bit of code for min subset sum difference
 
-
         LinkedList<Integer> list = new LinkedList<>();
         for(int i=0; i<sum+1; i++){
-            if(t[n-1][i] == true)
+            // filtering out the valid candidates for sum of subset
+            // these will be the true values in the last row
+            if(t[n-1][i])
                 list.add(sum);
         }
 
