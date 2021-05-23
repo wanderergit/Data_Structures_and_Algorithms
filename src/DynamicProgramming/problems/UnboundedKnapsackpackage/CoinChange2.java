@@ -4,6 +4,9 @@ public class CoinChange2 {
     /*
         Min. number of coins to reach given sum.
      */
+    /*
+        There is a similar problem called maximise the cut segments, code is almost same, in notes and in gfg
+     */
     public static void main(String[] args) {
         int[] coins = {2, 1, 1};
         int sum = 4;
