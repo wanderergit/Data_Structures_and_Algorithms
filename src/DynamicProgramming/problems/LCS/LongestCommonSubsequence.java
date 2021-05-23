@@ -4,6 +4,18 @@ public class LongestCommonSubsequence {
     /*
         Given two strings, we have to find the length of the longest common subsequence in both the strings
      */
+
+    static class Result{
+        int val;
+        int[][] table;
+
+        Result(int v, int[][] t){
+            val = v;
+            table = t;
+        }
+
+    }
+
     public static void main(String[] args) {
 
         String x = "abcdgh";
@@ -13,7 +25,7 @@ public class LongestCommonSubsequence {
 
         System.out.println(lcsRecursive(x, y));
         System.out.println(lcsMemoized(x, y));
-        System.out.println(lcsBottomUp(x, y));
+        System.out.println(lcsBottomUp(x, y).val);
 
     }
 
@@ -53,7 +65,7 @@ public class LongestCommonSubsequence {
         return t[m][n] = Math.max(lcsRecursiveHelper(x, y, m-1, n), lcsRecursiveHelper(x, y, m, n-1));
     }
 
-    public static int lcsBottomUp(String x, String y){
+    public static Result lcsBottomUp(String x, String y){
         int m = x.length();
         int n = y.length();
         int[][] table = new int[m+1][n+1];
@@ -69,7 +81,7 @@ public class LongestCommonSubsequence {
             }
         }
 
-        return table[m][n];
+        return new Result(t[m][n], t);
     }
 
 }

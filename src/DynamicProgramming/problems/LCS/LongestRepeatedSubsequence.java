@@ -1,6 +1,7 @@
 package DynamicProgramming.problems.LCS;
 
 public class LongestRepeatedSubsequence {
+
     public static void main(String[] args) {
         String x = "axxxxy";
         System.out.println(longestRepeatingSubsequence(x));
