@@ -1,0 +1,38 @@
+Backtracking is also thought of enhanced brute force.
+We use recursive approach to find all possible combinations.
+On reaching a dead-end, we return to the caller and try other approaches.
+
+Pseudocode :
+
+boolean solve(Node n){
+    if (checkIfNodeIsValidOutput(n) == true) return true;
+
+    for(Node item : possibleNeighborsOfNode){
+        if(solve(item) == true) return true;
+    }
+
+    return false;
+}
+
+###############
+
+Problems associated with backtracking can be categorized into 3 categories. They are:
+
+-> Decision Problems – Here, we search for a feasible solution.
+-> Optimization Problems – For this type, we search for the best solution.
+-> Enumeration Problems – We find set of all possible feasible solutions to the problems of this type.
+
+##############
+
+Identification - When a problem has clearly defined constraints where each new approach opens up new possible
+execution paths, such problems can be solved by backtracking.
+Especially popular in grid/maze, crosswords, verbal arithmetic, sudoku, N-queens.
+
+Many problems do have better DP or Greedy approaches, where backtracking is not required.
+
+##############
+
+
+Key Findings from Experience
+
+
