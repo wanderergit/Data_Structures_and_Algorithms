@@ -2,7 +2,7 @@ package Backtracking;
 
 public class KnightsTour {
     public static void main(String[] args) {
-        int n = 6;
+        int n = 8;
         int[][] res = findKnightTour(n);
         for(int i=0; i<n; i++){
             for(int j=0; j<n; j++){
@@ -31,13 +31,15 @@ public class KnightsTour {
         }
         // check all 8 possible cases
         if (isValidHop(x + 2, y + 1, n, visited)) recurse(x + 2, y + 1, hop + 1, grid, n, visited);
-        if (isValidHop(x + 2, y - 1, n, visited)) recurse(x + 2, y - 1, hop + 1, grid, n, visited);
+        if (isValidHop(x + 1, y + 2, n, visited)) recurse(x + 1, y + 2, hop + 1, grid, n, visited);
+        if (isValidHop(x - 1, y + 2, n, visited)) recurse(x - 1, y + 2, hop + 1, grid, n, visited);
         if (isValidHop(x - 2, y + 1, n, visited)) recurse(x - 2, y + 1, hop + 1, grid, n, visited);
         if (isValidHop(x - 2, y - 1, n, visited)) recurse(x - 2, y - 1, hop + 1, grid, n, visited);
-        if (isValidHop(x + 1, y + 2, n, visited)) recurse(x + 1, y + 2, hop + 1, grid, n, visited);
-        if (isValidHop(x + 1, y - 2, n, visited)) recurse(x + 1, y - 2, hop + 1, grid, n, visited);
-        if (isValidHop(x - 1, y + 2, n, visited)) recurse(x - 1, y + 2, hop + 1, grid, n, visited);
         if (isValidHop(x - 1, y - 2, n, visited)) recurse(x - 1, y - 2, hop + 1, grid, n, visited);
+        if (isValidHop(x + 1, y - 2, n, visited)) recurse(x + 1, y - 2, hop + 1, grid, n, visited);
+        if (isValidHop(x + 2, y - 1, n, visited)) recurse(x + 2, y - 1, hop + 1, grid, n, visited);
+
+
         //set visited back to false for other cases to visit this cell
         visited[x][y] = false;
 
