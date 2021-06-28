@@ -35,12 +35,11 @@ public class Dijsktras {
         graph.put(3, list3);
         List<Edge> list4 = new ArrayList<>();
         graph.put(4, list4);
-        //start Node = 0
 
+        //start Node = 0
         int s = 0;
 
         //the dijkstras algorithm will return an array of the shortest distance from the starting node to each of the nodes.
-
         int[] res = dijkstras(graph, v, s);
         System.out.println(Arrays.toString(res));
     }
@@ -48,9 +47,12 @@ public class Dijsktras {
     public static int[] dijkstras(HashMap<Integer, List<Edge>> graph, int n, int s){
         int[] dist = new int[n];
         boolean[] vis = new boolean[n];
-        //setting all initial values in dist array to be positive infinity
-        for(int i=0; i<n; i++) dist[i] = Integer.MAX_VALUE;
+
+        //setting all initial values in dist array to be positive infinity and start node = 0
+        for(int i=0; i<n; i++)
+            dist[i] = Integer.MAX_VALUE;
         dist[s] = 0;
+
         //we will need a PQ which sorts based on values
         PriorityQueue<Pair> pq = new PriorityQueue<>(10, new PairsComparator());
         pq.add(new Pair(0, 0));

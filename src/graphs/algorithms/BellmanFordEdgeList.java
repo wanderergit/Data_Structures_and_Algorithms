@@ -47,7 +47,8 @@ public class BellmanFordEdgeList {
     public static double[] bellmanFord(ArrayList<Edge> edges, int v, int s){
         //initialise the dist. array
         double[] dist = new double[v];
-        for(int i=0; i<v; i++) dist[i] = Double.POSITIVE_INFINITY;
+        for(int i=0; i<v; i++)
+            dist[i] = Double.POSITIVE_INFINITY;
         dist[s] = 0;
 
         //loop V-1 times and relax each edge in the graph
@@ -64,7 +65,7 @@ public class BellmanFordEdgeList {
         for(int i=0; i<v-1; i++){
             for(Edge edge : edges){
                 //if after finding the final distance, we have negative cycles. We will encounter another decrease
-                //such a decrease will lead to an ininite loop
+                //such a decrease will lead to an infinite loop
                 if(dist[edge.from] + edge.weight < dist[edge.to]){
                     dist[edge.to] = Double.NEGATIVE_INFINITY;
                 }
