@@ -1,46 +1,48 @@
-//package BinarySearch;
-//
-//public class FindInSortedRotatedArray {
-//    public static void main(String[] args) {
-//
-//    }
-//    public int search(final List<Integer> A, int B) {
-//
-//        int pivot = findPivot(A);
-//        // System.out.println(pivot);
-//        if(B == A.get(pivot)) return pivot;
-//        else if(B <= A.get(A.size()-1)) return binSearch(A, B, pivot+1, A.size()-1);
-//        return binSearch(A, B, 0, pivot-1);
-//    }
-//
-//    public static int findPivot(final List<Integer> A){
-//        int mid, s = 0, e = A.size()-1, res =  -1;
-//
-//        while(s <= e){
-//            mid = s + (e-s)/2;
-//            if(A.get(mid-1) > A.get(mid) && A.get(mid+1) > A.get(mid)){
-//                res = mid;
-//                break;
-//            } else if(A.get(mid) > A.get(s))
-//                s = mid+1;
-//            else if(A.get(mid) < A.get(e))
-//                e = mid-1;
-//        }
-//
-//        return res;
-//    }
-//
-//    public static int binSearch(final List<Integer> A, int B, int s, int e){
-//        int mid;
-//
-//        while(s <= e){
-//            mid = s + (e-s)/2;
-//            if(A.get(mid) == B) return mid;
-//            else if(A.get(mid) > B) e = mid - 1;
-//            else if(A.get(mid) < B) s = mid + 1;
-//        }
-//
-//
-//        return -1;
-//    }
-//}
+package BinarySearch;
+
+public class FindInSortedRotatedArray {
+    public static void main(String[] args) {
+
+    }
+
+    public int search(int[] nums, int target) {
+        int l=0, h=nums.length-1;
+        while(l<=h){
+            int m=(l+h)/2;
+            // if found return index
+            if(nums[m]==target)
+                return m;
+            // left sorted portion
+            // check if nums at mid >= nums at low, in that case we know we are in the left sorted portion
+            if(nums[l] <= nums[m]){
+                // check if target is greater than nums at mid, in that case check the portion to the right of mid
+                if(target > nums[m])
+                    l = m+1;
+                // if target <= nums at mid, we should also check if target is < nums at lower
+                else{
+                    // if target < nums at lower, we should check the right of mid portion
+                    if(target < nums[l])
+                        l = m+1;
+                    // else we should check the portion left of mid
+                    else
+                        h = m-1;
+                }
+            } else {
+                // right sorted portion
+                // if target is lesser than nums at mid, we will check the portion to the left of mid
+                if(target < nums[m])
+                    h = m-1;
+                // if the target is greater or equal than nums at mid, we have to compare target with nums at high
+                else{
+                    // if target > nums at hight we will check the left of mid
+                    if(target > nums[h])
+                        h = m-1;
+                    // else we check the right of mid
+                    else
+                        l = m+1;
+                }
+            }
+        }
+        return -1;
+    }
+}
