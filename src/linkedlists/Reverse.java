@@ -33,8 +33,11 @@ public class Reverse {
 //        Node revHead = reverseLL(n1);
 //        printList(revHead);
 
-        Node revHead2 = reverseLLIterative(n1);
-        printList(revHead2);
+//        Node revHead2 = reverseLLIterative(n1);
+//        printList(revHead2);
+
+        Node rev = reverseInGroupsK(n1, 3);
+        printList(rev);
 
     }
 
@@ -62,6 +65,28 @@ public class Reverse {
             prev = curr;
             curr = nxt;
         }
+
+        return prev;
+    }
+
+    public static Node reverseInGroupsK(Node head, int k){
+        if(head == null || head.next == null) return head;
+
+        Node prev = null;
+        Node curr = head;
+        Node nxt = null;
+
+        int count = 0;
+        while(count < k && curr != null){
+            nxt = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nxt;
+            count++;
+        }
+
+        if(nxt != null)
+            head.next = reverseInGroupsK(nxt, k);
 
         return prev;
     }
