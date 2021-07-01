@@ -1,14 +1,6 @@
 package linkedlists;
 
 public class Reverse {
-    static class Node{
-        int val;
-        Node next;
-        Node(int val){
-            this.val = val;
-            this.next = null;
-        }
-    }
 
     public static void printList(Node head){
         Node temp = head;
