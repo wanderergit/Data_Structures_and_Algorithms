@@ -2,15 +2,6 @@ package linkedlists;
 
 public class Reverse {
 
-    public static void printList(Node head){
-        Node temp = head;
-        while(temp != null){
-            System.out.print(temp.val + "->");
-            temp = temp.next;
-        }
-        System.out.println("null");
-    }
-
     public static void main(String[] args) {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -21,15 +12,15 @@ public class Reverse {
         n2.next = n3;
         n3.next = n4;
 
-        printList(n1);
+        Node.printList(n1);
 //        Node revHead = reverseLL(n1);
-//        printList(revHead);
+//        Node.printList(revHead);
 
 //        Node revHead2 = reverseLLIterative(n1);
-//        printList(revHead2);
+//        Node.printList(revHead2);
 
         Node rev = reverseInGroupsK(n1, 3);
-        printList(rev);
+        Node.printList(rev);
 
     }
 
