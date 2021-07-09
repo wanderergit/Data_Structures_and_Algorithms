@@ -1,4 +1,4 @@
-package graphs;
+package graphs.problems;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class StepsByKnight {
         // we can have a getValidMoves function which return the valid neighbors of
         // the knight's position.
 
-        // we can use bfs because this is an unwighted graph, all moves have equal weights
+        // we can use bfs because this is an unweighted graph, all moves have equal weights
         // using bfs, we will count the shortest distance in undirected graph.
         if(src[0] == target[0] && src[1] == target[1]) return 0;
         Queue<Coordinates> q = new LinkedList<>();

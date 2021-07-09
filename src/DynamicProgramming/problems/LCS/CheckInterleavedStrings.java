@@ -8,8 +8,7 @@ public class CheckInterleavedStrings {
         String a = "XXY", b = "XXZ", c = "XXYXXZ";
         System.out.println(isInterleave(a, b, c));
     }
-    public static boolean isInterleave(String a,String b,String c)
-    {
+    public static boolean isInterleave(String a,String b,String c) {
         // step 1 : get lcs length of (a, c)
 
         int lcsLengthA = lcs(a, c);
