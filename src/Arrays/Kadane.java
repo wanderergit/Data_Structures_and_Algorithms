@@ -8,11 +8,22 @@ public class Kadane {
     public static int maxSumSubarray(int[] arr, int n){
         int currSum = 0;
         int maxSum = Integer.MIN_VALUE;
+        int maxLen = Integer.MIN_VALUE;
+        int len = 0;
         for(int i=0; i<n; i++){
             currSum += arr[i];
-            if(currSum > maxSum) maxSum = currSum;
-            if(currSum < 0) currSum = 0;
+            if(maxSum < currSum){
+                maxSum = currSum;
+            }
+            if(currSum < 0){
+                currSum = 0;
+                len = 0;
+            } else {
+                len++;
+                if(maxLen < len)
+                    maxLen = len;
+            }
         }
-        return maxSum;
+        return maxLen;
     }
 }
